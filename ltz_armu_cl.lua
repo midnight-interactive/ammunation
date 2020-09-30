@@ -19,19 +19,19 @@ end)
 
 local Airsoft = {
 
-    Base = { Title = "AirSoft Store", HeaderColor = {255,1,1} },
-    Data = { currentMenu = "Disponible :" },
+    Base = { Title = "Ammu-Nation", HeaderColor = {255,1,1} },
+    Data = { currentMenu = "Available :" },
     Events = {
 
         onSelected = function(self, _, btn, CMenu, menuData, currentButton, currentSlt, result)
-              if btn.name == "Couteau" then
-                    TriggerServerEvent('loutzearmu:buy', 250, "weapon_knife", "Couteau")
-            elseif btn.name == "Batte" then 
-                    TriggerServerEvent('loutzearmu:buy', 400, "weapon_bat", "Batte")
-            elseif btn.name == "Cran d'arrêt" then 
-                    TriggerServerEvent('loutzearmu:buy', 900, "weapon_switchblade", "Cran d'arrêt")
-            elseif btn.name == "Lampe Torche" then 
-                    TriggerServerEvent('loutzearmu:buy', 100, "weapon_flashlight", "Lampe Torche")
+              if btn.name == "Knife" then
+                    TriggerServerEvent('loutzearmu:buy', 250, "weapon_knife", "Knife")
+            elseif btn.name == "Bat" then 
+                    TriggerServerEvent('loutzearmu:buy', 400, "weapon_bat", "Bat")
+            elseif btn.name == "Switchblade" then 
+                    TriggerServerEvent('loutzearmu:buy', 900, "weapon_switchblade", "Switchblade")
+            elseif btn.name == "Flashlight" then 
+                    TriggerServerEvent('loutzearmu:buy', 100, "weapon_flashlight", "Flashlight")
             elseif btn.name == "Katana" then 
                     TriggerServerEvent('loutzearmu:buy', 700, "weapon_katana", "Katana")
               end
@@ -39,12 +39,12 @@ local Airsoft = {
     },
 
     Menu = {
-        ["Disponible :"] = {
+        ["Available :"] = {
             b = {
-                {name = "Couteau", ask = "~g~250$", askX = true},
-                {name = "Batte", ask = "~g~400$", askX = true},
-                {name = "Cran d'arrêt", ask = "~g~900$", askX = true},
-                {name = "Lampe Torche", ask = "~g~100$", askX = true},
+                {name = "Knife", ask = "~g~250$", askX = true},
+                {name = "Bat", ask = "~g~400$", askX = true},
+                {name = "Switchblade", ask = "~g~900$", askX = true},
+                {name = "Flashlight", ask = "~g~100$", askX = true},
                 {name = "Katana", ask = "~g~700$", askX = true},
             }
         },
@@ -67,7 +67,7 @@ Citizen.CreateThread(function()
             local dist = Vdist(plyCoords.x, plyCoords.y, plyCoords.z, Shops[k].x, Shops[k].y, Shops[k].z)
 
             if dist <= 2.0 then
-                ESX.ShowHelpNotification("Appuyez sur ~INPUT_TALK~ pour intéragir avec le ~r~vendeur")
+                ESX.ShowHelpNotification("Press ~INPUT_TALK~ to purchase a ~r~weapon")
 				if IsControlJustPressed(1,51) then 
                     CreateMenu(Airsoft)
 				end
